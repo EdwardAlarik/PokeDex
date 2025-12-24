@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">PokeDex</string>
+    <string name="app_title">PokeDex</string>
+
+    <!-- Menu NavBottom y Drawer -->
+    <string name="home">Inicio</string>
+    <string name="listPokemon">Pokemon</string>
+    <string name="listTypes">Tipos</string>
+    <string name="settings">Configuración</string>
+
+    <!-- Elementos en General -->
+    <string name="canceled_procedure">Cancelo el procedimiento</string>
+    <string name="alert_title">Titulo de la alerta</string>
+    <string name="alert_message">Mensaje de la alerta</string>
+    <string name="alert_positive">Aceptar</string>
+    <string name="alert_negative">Cancelar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

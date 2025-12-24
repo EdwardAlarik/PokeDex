@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CircularProgress" parent="Theme.AppCompat.Light">
+        <item name="android:indeterminateTint">@color/black</item>
+    </style>
+
+    <style name="CustomOutlineBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/color_base</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="hintTextColor">@color/color_base</item>
+    </style>
+
+    <style name="error" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/danger</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AppToolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:tint">@android:color/white</item>
+    </style>
+
+    <style name="ClickableView">
+        <item name="android:clickable">true</item>
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="BottomNavText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingTop">2dp</item>
+    </style>
+</resources>

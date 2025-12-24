@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#D62828</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#595959</color>
+
+    <color name="success">#198754</color>
+    <color name="danger">#dc3545</color>
+    <color name="warning">#ffc107</color>
+    <color name="question">#6200EA</color>
+    <color name="info">#0dcaf0</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="color_base">#D62828</color>
+    <color name="luces_sencores">#0077B6</color>
+    <color name="bordes">#2B2D42</color>
+    <color name="indicadores">#EDF2F4</color>
+    <color name="advertencias">#FFD166</color>
+
+    <color name="normal">#A8A77A</color>
+    <color name="fire">#EE8130</color>
+    <color name="water">#6390F0</color>
+    <color name="electric">#F7D02C</color>
+    <color name="grass">#7AC74C</color>
+    <color name="ice">#96D9D6</color>
+    <color name="fighting">#C22E28</color>
+    <color name="poison">#A33EA1</color>
+    <color name="ground">#E2BF65</color>
+    <color name="flying">#A98FF3</color>
+    <color name="psychic">#F95587</color>
+    <color name="bug">#A6B91A</color>
+    <color name="rock">#B6A136</color>
+    <color name="ghost">#735797</color>
+    <color name="dragon">#6F35FC</color>
+    <color name="dark">#705746</color>
+    <color name="steel">#B7B7CE</color>
+    <color name="fairy">#D685AD</color>
+</resources>
