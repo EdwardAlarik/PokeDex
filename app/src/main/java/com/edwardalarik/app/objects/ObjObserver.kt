@@ -24,4 +24,16 @@ class ObjObserver(
 
     val _dataPokemon = MutableLiveData<KModels.Pokemon>()
     val dataPokemon: LiveData<KModels.Pokemon> = _dataPokemon
+    val _dataAbilitysPokemon = MutableLiveData(ArrayList<KModels.ListAbilitys>())
+    val dataAbilitysPokemon: LiveData<ArrayList<KModels.ListAbilitys>> = _dataAbilitysPokemon
+    val _dataTypesPokemon = MutableLiveData(ArrayList<KModels.ListTypes>())
+    val dataTypePokemon: LiveData<ArrayList<KModels.ListTypes>> = _dataTypesPokemon
+    val _dataStatsPokemon = MutableLiveData(ArrayList<KModels.ListStats>())
+    val dataStatsPokemon: LiveData<ArrayList<KModels.ListStats>> = _dataStatsPokemon
+
+    fun clear() {
+        _dataPokemon.postValue(KModels.Pokemon())
+        _dataAbilitysPokemon.postValue(ArrayList())
+        _dataTypesPokemon.postValue(ArrayList())
+    }
 }

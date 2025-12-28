@@ -3,10 +3,16 @@
     <string name="app_title">PokeDex</string>
 
     <!-- Menu NavBottom y Drawer -->
-    <string name="home">Inicio</string>
+    <string name="home">Home</string>
     <string name="listPokemon">Pokemon</string>
-    <string name="listTypes">Tipos</string>
-    <string name="settings">Configuración</string>
+    <string name="listFavorites">Favorites</string>
+    <string name="listTypes">Types</string>
+    <string name="settings">Settings</string>
+
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="species">Species</string>
+    <string name="abilities">Abilities</string>
 
     <!-- Elementos en General -->
     <string name="canceled_procedure">Cancelo el procedimiento</string>

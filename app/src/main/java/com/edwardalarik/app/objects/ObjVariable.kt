@@ -15,6 +15,7 @@ class ObjVariable(
     }
 
     var idPokemon: Int = 0
+    var q: String = ""
 
     fun existPokemon(idPokemon: Int): Boolean {
         var isExiste = false
@@ -33,7 +34,7 @@ class ObjVariable(
         objDB.db.rawQuery(KQuerys.queryPokemon(idPokemon), null).use { c ->
             if (c.moveToFirst()) {
                 isExiste =
-                    if (c.getString(c.getColumnIndexOrThrow(DB.COL_ABILITIES)).isNullOrEmpty()) {
+                    if (c.getString(c.getColumnIndexOrThrow(DB.COL_ORDER)).isNullOrEmpty()) {
                         false
                     } else {
                         true

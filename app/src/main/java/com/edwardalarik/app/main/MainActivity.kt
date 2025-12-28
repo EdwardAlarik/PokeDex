@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                     graphNavigation.navigate(R.id.actionListPokemon)
                     true
                 }
-                R.id.listTypes -> {
+                R.id.listFavorite -> {
                     graphNavigation.navigate(R.id.actionListTypes)
                     true
                 }

@@ -131,9 +131,9 @@ class Pokemon(
     )
 
     class Stats (
-        val base_stat: String = "",
-        val effort: String = "",
-        val star: Result
+        val base_stat: Int = 0,
+        val effort: Int = 0,
+        val stat: Result
     )
 
     class Types (

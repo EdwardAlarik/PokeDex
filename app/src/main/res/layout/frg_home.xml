@@ -27,22 +27,4 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="6dp"
-        app:cardBackgroundColor="@android:color/white">
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:queryHint="Buscar Pokémon"
-            android:iconifiedByDefault="false"
-            android:background="@android:color/transparent"/>
-
-    </com.google.android.material.card.MaterialCardView>
-
 </LinearLayout>

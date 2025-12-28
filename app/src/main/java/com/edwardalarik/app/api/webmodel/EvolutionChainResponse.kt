@@ -1,15 +1,25 @@
 package com.edwardalarik.app.api.webmodel
 
-class EvolutionChainResponse(
-    var baby_trigger_item: String = "",
-    var chain: Chain,
+class EvolutionChainResponse {
+    var baby_trigger_item: String = ""
+    var chain: Chain = Chain(
+        evolution_details = ArrayList(),
+        evolves_to = ArrayList(),
+        is_baby = false,
+        species = Result()
+    )
     var id: Int = 0
-) {
+
+    class Result (
+        val name: String = "",
+        val url: String = ""
+    )
+
     class Chain (
         val evolution_details: ArrayList<EvolutionDetail> = ArrayList(),
         val evolves_to: ArrayList<Chain> = ArrayList(),
         val is_baby: Boolean = false,
-        val species: Species
+        val species: Result
     )
 
     class EvolutionDetail (
@@ -31,17 +41,7 @@ class EvolutionChainResponse(
         val relative_physical_stats: Int = 0,
         val time_of_day: String = "",
         val trade_species: Any?,
-        val trigger: Trigger,
+        val trigger: Result,
         val turn_upside_down: Boolean = false
-    )
-
-    class Trigger (
-        val name: String = "",
-        val url: String = ""
-    )
-
-    class Species (
-        val name: String = "",
-        val url: String = ""
     )
 }

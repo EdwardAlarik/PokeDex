@@ -6,13 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.edwardalarik.app.AppViewModel
 import com.edwardalarik.app.R
 import com.edwardalarik.app.api.models.KModels
-import com.edwardalarik.app.databinding.FrgHomeBinding
 import com.edwardalarik.app.databinding.FrgListPokemonBinding
 import kotlin.getValue
 
@@ -34,6 +34,22 @@ class FrgListPokemon : Fragment() {
         setInitValues()
         getData()
         initObservers()
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let {
+                    viewModel.source.objPokemon.getListPokemonSearch(it)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    viewModel.source.objPokemon.getListPokemonSearch(it)
+                }
+                return true
+            }
+        })
     }
 
     private fun setInitValues() {

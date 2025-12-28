@@ -8,15 +8,27 @@ class KModels {
         var types: String = ""
     )
 
+    data class ListAbilitys(
+        var id: Int = 0,
+        var name: String = ""
+    )
+
     data class ListTypes(
         var id: Int = 0,
         var name: String = ""
     )
 
+    data class ListStats(
+        var name: String = "",
+        var base_stat: Int = 0,
+        var type: String = ""
+    )
+
     data class Pokemon(
         var abilities: String = "",
         var base_experience: Int = 0,
-        var cries: String = "",
+        var cries_latest: String = "",
+        var cries_legacy: String = "",
         var forms: String = "",
         var game_indices: String = "",
         var height: Int = 0,
@@ -33,6 +45,8 @@ class KModels {
         var sprites: String = "",
         var stats: String = "",
         var types: String = "",
-        var weight: Int = 0
+        var weight: Int = 0,
+        var fav: Int = 0,
+        var description: String = ""
     )
 }

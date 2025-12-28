@@ -2,9 +2,7 @@ package com.edwardalarik.app.modules.listtypes
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.compose.ui.text.toLowerCase
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.edwardalarik.app.api.extensions.setTypeIcon
 import com.edwardalarik.app.api.extensions.typeColor
 import com.edwardalarik.app.api.models.KModels

@@ -12,6 +12,7 @@ import com.edwardalarik.app.api.extensions.toTrueFalse
 import com.edwardalarik.app.api.logic.retrofitCache
 import com.edwardalarik.app.api.service.APIInterface
 import com.edwardalarik.app.api.webmodel.Pokemon
+import com.edwardalarik.app.api.webmodel.PokemonSpecies
 import com.edwardalarik.app.api.webmodel.listPokemon
 import com.edwardalarik.app.api.webmodel.listType
 import com.edwardalarik.app.api.webmodel.listAbility
@@ -206,6 +207,7 @@ class ObjNetwork(
 
                 list.forEach { it ->
                     if (!objVariable.existPokemon(it.url.toId())) {
+
                         objBD.frameDB.insert(
                             DB.TAB_POKEMON, listOf(
                                 Pair(DB.COL_ID_POKEMON, it.url.toId()),
@@ -240,24 +242,87 @@ class ObjNetwork(
                 if (isOK) {
                     val model = Gson().fromJson(data, Pokemon::class.java)
 
-                    val abilitys = model.abilities.map { it.ability.url.toId() }.joinToString(",")
-                    val types = model.types.map { it.type.url.toId() }.joinToString(",")
-                    val moves = model.moves.map { it.move.url.toId() }.joinToString(",")
-
                     objBD.frameDB.update(
                         DB.TAB_POKEMON, listOf(
                             Pair(DB.COL_ID_POKEMON, model.id),
                             Pair(DB.COL_ORDER, model.order),
                             Pair(DB.COL_NAME, model.name.toCapital()),
-                            Pair(DB.COL_ABILITIES, abilitys),
-                            Pair(DB.COL_TYPES, types),
-                            Pair(DB.COL_MOVES, moves),
+                            Pair(DB.COL_CRIES_LATEST, model.cries.latest),
+                            Pair(DB.COL_CRIES_LEGACY, model.cries.legacy),
+                            Pair(DB.COL_SPECIES, model.species.name.toCapital()),
                             Pair(DB.COL_HEIGHT, model.height),
                             Pair(DB.COL_WEIGHT, model.weight),
                             Pair(DB.COL_BASE_EXPERIENCE, model.base_experience),
                             Pair(DB.COL_IS_DEFAULT, model.is_default.toTrueFalse()),
                             Pair(DB.COL_LOCATION_AREA_ENCOUNTERS, model.location_area_encounters)
-                        ),"${DB.COL_ID_POKEMON} = '$idPokemon'")
+                        ), "${DB.COL_ID_POKEMON} = '$idPokemon'"
+                    )
+
+                    model.abilities.map { it ->
+                        objBD.frameDB.insert(
+                            DB.TAB_POKEMON_ABILITIES, listOf(
+                                Pair(DB.COL_ID_POKEMON, idPokemon),
+                                Pair(DB.COL_NAME, it.ability.name.toCapital()),
+                                Pair(DB.COL_IS_HIDDEN, it.is_hidden.toTrueFalse()),
+                                Pair(DB.COL_SLOT, it.slot)
+                            ),
+                            true
+                        )
+                    }
+
+                    model.stats.map { it ->
+                        objBD.frameDB.insert(
+                            DB.TAB_POKEMON_STATS, listOf(
+                                Pair(DB.COL_ID_POKEMON, idPokemon),
+                                Pair(DB.COL_NAME, it.stat.name.toCapital()),
+                                Pair(DB.COL_BASE_STAT, it.base_stat),
+                                Pair(DB.COL_EFFORT, it.effort)
+                            ),
+                            true
+                        )
+                    }
+
+                    model.types.map { it ->
+                        objBD.frameDB.insert(
+                            DB.TAB_POKEMON_TYPES, listOf(
+                                Pair(DB.COL_ID_POKEMON, idPokemon),
+                                Pair(DB.COL_NAME, it.type.name.toCapital()),
+                                Pair(DB.COL_SLOT, it.slot)
+                            ),
+                            true
+                        )
+                    }
+
+                    onReady.invoke()
+                } else {
+                    onReady.invoke()
+                }
+            } catch (e: Exception) {
+                Log.e("Servicios", e.toString())
+            }
+        }
+
+        return call
+    }
+
+    fun dataPokemonSpecies(idPokemon: Int, onReady: () -> Unit): Call<JsonElement> {
+        val call = apiInterface.getByJson(
+            url = "${BuildConfig.url_app}pokemon-species/$idPokemon"
+        )
+
+        call.validaCodeResponseAsync("Datos Pokemon Species") { isOK, message, data ->
+            try {
+                if (isOK) {
+                    val model = Gson().fromJson(data, PokemonSpecies::class.java)
+
+                    objBD.frameDB.update(
+                        DB.TAB_POKEMON, listOf(
+                            Pair(DB.COL_DESCRIPTION,
+                                model.flavor_text_entries[0].flavor_text.replace("\n", " ")
+                                    .replace("\u000c", " ")
+                            )
+                        ), "${DB.COL_ID_POKEMON} = '$idPokemon'"
+                    )
                     onReady.invoke()
                 } else {
                     onReady.invoke()
